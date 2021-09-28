@@ -1,6 +1,10 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <md-field>
+      <label for="myin"></label>
+      <md-input name="myin" type="text"></md-input>
+    </md-field>
+    <md-button class="md-primary md-raised">Button</md-button>
   </div>
 </template>
 
@@ -8,13 +12,13 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String,
-  },
-};
+    msg: String
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 h3 {
   margin: 40px 0 0;
 }
