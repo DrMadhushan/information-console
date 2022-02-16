@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md p-0" id="left-nav-bar">
+        <%- include('partials/navbar') %>
+      </div>
+
+      <div class="col-md" id="body-main">
+        <div id="search-section" class="d-flex align-items-center">
+          <%- include('partials/exploreSection'); %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+<style>
+  body {
+    position: relative;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+  #admin-section {
+        height: 100%;
+  }
+  #home-section {
+      height: 100%;
+  }
+</style>
+<script>
+
+</script>
+
+</html>

@@ -1,0 +1,57 @@
+<a class="btn btn-primary rounded-0 nav-link-block d-flex align-items-center" id="nav-home-block">
+    <div class="nav-icon text-center w-100">
+      <div class="text-center h2" id="icon"><i class="bi bi-house"></i></div>
+      <div class="p-1 text-center text-uppercase" id="link-topic">home</div>
+    </div>
+  </a>
+  
+  <a class="btn btn-success rounded-0 nav-link-block d-flex align-items-center" id="nav-search-block">
+    <div class="nav-icon text-center w-100">
+      <div class="text-center h2" id="icon"><i class="bi bi-search"></i></div>
+      <div class="p-1 text-center text-uppercase" id="link-topic">explore</div>
+    </div>
+  </a>
+
+  <a class="btn btn-secondary rounded-0 nav-link-block d-flex align-items-center" id="nav-package-block" onclick="openPackage();">
+    <div class="nav-icon text-center w-100">
+      <div class="text-center h2" id="icon"><i class="bi bi-box-seam"></i></div>
+      <div class="p-1 text-center text-uppercase" id="link-topic">package</div>
+    </div>
+  </a>
+
+  <a class="btn btn-info rounded-0 nav-link-block d-flex align-items-center" id="nav-info-block">
+    <div class="nav-icon text-center w-100">
+      <div class="text-center text-white h2" id="icon"><i class="bi bi-info-circle"></i></div>
+      <div class="p-1 text-center text-uppercase text-white" id="link-topic">info</div>
+    </div>
+  </a>
+
+  <a class="btn btn-dark rounded-0 nav-link-block d-flex align-items-center" id="nav-settings-block">
+    <div class="nav-icon text-center w-100">
+      <div class="text-center h2" id="icon"><i class="bi bi-gear"></i></div>
+      <div class="p-1 text-center text-uppercase" id="link-topic">settings</div>
+    </div>
+  </a>
+
+  <style>
+    #left-nav-bar {
+        position: absolute;
+        width: 10%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        position: fixed;
+        height: 100vh;
+    }
+    .nav-link-block {
+        height: 20%;
+    }
+    a:link {
+        text-decoration: none;
+    }
+  </style>
+  <script>
+    $("#nav-package-block").on("click", function() {
+      document.getElementById("admin-section").scrollIntoView({behavior: 'smooth'});
+    });
+  </script>
