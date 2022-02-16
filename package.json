@@ -1,0 +1,33 @@
+{
+  "name": "information-console",
+  "version": "1.0.0",
+  "description": "Developer - Madhushan R - E/17/194",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"node resources/app/app.js\"  \"electron .\"",
+    "server": "nodemon server.js",
+    "app": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrMadhushan/information-console.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DrMadhushan/information-console/issues"
+  },
+  "homepage": "https://github.com/DrMadhushan/information-console#readme",
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "ejs": "^3.1.6",
+    "electron": "^17.0.0",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
