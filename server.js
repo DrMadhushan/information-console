@@ -14,7 +14,8 @@ server.use(express.static(path.join(__dirname, "/src/public"))); // configure ex
 
 server.get("/", async function (req, res) {
   // res.json({ hello: "world" });
-  res.render("home", {});
+  let images = ["1.jpg", "2.jpg", "3.jpg"];
+  res.render("home", {images: images});
 });
 
 server.get("/about", async function (req, res) {
