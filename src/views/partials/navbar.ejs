@@ -1,38 +1,42 @@
-<a class="btn btn-primary rounded-0 nav-link-block d-flex align-items-center" id="nav-home-block">
+
+<a href="/" class="btn btn-primary rounded-0 nav-link-block d-flex align-items-center" id="nav-home-block">
     <div class="nav-icon text-center w-100">
       <div class="text-center h2" id="icon"><i class="bi bi-house"></i></div>
       <div class="p-1 text-center text-uppercase" id="link-topic">home</div>
     </div>
   </a>
   
-  <a class="btn btn-success rounded-0 nav-link-block d-flex align-items-center" id="nav-search-block">
+  <a href="/explore" class="btn btn-success rounded-0 nav-link-block d-flex align-items-center" id="nav-search-block" aria-disabled="true">
     <div class="nav-icon text-center w-100">
       <div class="text-center h2" id="icon"><i class="bi bi-search"></i></div>
       <div class="p-1 text-center text-uppercase" id="link-topic">explore</div>
     </div>
   </a>
 
-  <a class="btn btn-secondary rounded-0 nav-link-block d-flex align-items-center" id="nav-package-block" onclick="openPackage();">
+  <a href="/userLogin" onclick="load();" class="btn btn-secondary rounded-0 nav-link-block d-flex align-items-center" id="nav-package-block">
     <div class="nav-icon text-center w-100">
       <div class="text-center h2" id="icon"><i class="bi bi-box-seam"></i></div>
       <div class="p-1 text-center text-uppercase" id="link-topic">package</div>
     </div>
   </a>
 
-  <a class="btn btn-info rounded-0 nav-link-block d-flex align-items-center" id="nav-info-block">
+  <a href="/info" class="btn btn-info rounded-0 nav-link-block d-flex align-items-center" id="nav-info-block">
     <div class="nav-icon text-center w-100">
       <div class="text-center text-white h2" id="icon"><i class="bi bi-info-circle"></i></div>
       <div class="p-1 text-center text-uppercase text-white" id="link-topic">info</div>
     </div>
   </a>
 
-  <a class="btn btn-dark rounded-0 nav-link-block d-flex align-items-center" id="nav-settings-block">
+  <a href="/adminLogin" class="btn btn-dark rounded-0 nav-link-block d-flex align-items-center" id="nav-settings-block">
     <div class="nav-icon text-center w-100">
       <div class="text-center h2" id="icon"><i class="bi bi-gear"></i></div>
       <div class="p-1 text-center text-uppercase" id="link-topic">settings</div>
     </div>
   </a>
-
+  <div id="load">
+    <img width="200px" height="100%" src="/images/loadingTrans3.gif" alt="">
+  </div>
+  
   <style>
     #left-nav-bar {
         position: absolute;
@@ -49,9 +53,21 @@
     a:link {
         text-decoration: none;
     }
+    #load {
+      position: absolute;
+      top: 38%;
+      left: 470%;
+      visibility: hidden;
+    }
+    #load img{
+      z-index: 100;
+    }
   </style>
   <script>
     $("#nav-package-block").on("click", function() {
       document.getElementById("admin-section").scrollIntoView({behavior: 'smooth'});
     });
+    function load() {
+      document.getElementById("load").style.visibility = 'visible';
+    }
   </script>

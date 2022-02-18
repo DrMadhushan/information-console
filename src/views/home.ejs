@@ -9,10 +9,11 @@
       </div>
 
       <div class="col-md" id="body-main">
+
         <div id="home-section" class="d-flex align-items-center">
-          <%- include('partials/homeSection'); %>
+          <%- include('homeSection'); %>
         </div>
-        <div id="admin-section">admin</div>
+
       </div>
     </div>
   </div>
@@ -25,11 +26,13 @@
     width: 0;
     background: transparent;
   }
-  #admin-section {
-        height: 100%;
-  }
   #home-section {
       height: 100%;
+  }
+  #body-main {
+      margin-left: 10%;
+      height: 100vh;
+      background-color: rgb(255, 255, 255);
   }
 </style>
 <script>

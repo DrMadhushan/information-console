@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md p-0" id="left-nav-bar">
+        <%- include('../partials/navbar') %>
+      </div>
+
+      <div class="col-md" id="body-main">
+
+        <div id="main-section" class="d-flex">
+          <input class="input use-keyboard-input"/>
+          <textarea class="use-keyboard-input"></textarea>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+<style>
+  body {
+    position: relative;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+  #main-section {
+      height: 100%;
+  }
+  #body-main {
+      margin-left: 10%;
+      height: 100vh;
+      background-color: rgb(255, 255, 255);
+  }
+</style>
+<script>
+
+</script>
+
+</html>
