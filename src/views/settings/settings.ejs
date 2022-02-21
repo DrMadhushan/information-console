@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md p-0" id="left-nav-bar">
+        <%- include('../partials/navbar') %>
+      </div>
+
+      <div class="col-md" id="body-main">
+
+        <div id="main-section" class="d-flex pt-4 flex-column align-items-center">
+          <div id="admin-header" class="pb-3 d-flex flex-column align-items-center justify-content-center">
+              <img height="150px"  src="/images/adminLogin.jpg">
+              <div class="h2">Admin Space</div>
+          </div>
+          <table class="table">
+              <tr id="control-row">
+                <td id="right" class="w-25"> Close App :</td>
+                <td id="left">
+                    <button onclick="closeKioskApp()" id="kiosk-mode" class="btn btn-danger btn-sm"><i class="bi bi-arrows-fullscreen"></i>&nbsp Exit Kiosk</button>
+                    <!-- <button onclick="setApplicationMode()" id="app-mode" class="btn btn-danger"><i class="bi bi-back"></i>&nbsp Applicattion Mode</button> -->
+                </td>
+              </tr>
+              <tr>
+                <td id="right" class="w-25">Upload banner :</td>
+                <td id="left">
+                  <form action="/uploadBanner" method="post" enctype="multipart/form-data">
+                    <input type="file" name="banner" id="upload-banner" required accept=".jpg,.jpeg,.png,.gif">
+                    <input type="submit" class="btn btn-success btn-sm" name="submit" value="Upload">
+                  </form>
+                </td>
+              </tr>
+          </table>
+          <div id="choose-mode" class="">
+             
+              
+          </div>
+          #
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+<style>
+  body {
+    position: relative;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+  #main-section {
+      height: 100%;
+  }
+  #body-main {
+      margin-left: 10%;
+      height: 100vh;
+      background-color: rgb(255, 255, 255);
+  }
+  #right {
+      text-align: end;
+  }
+</style>
+<script>
+  function closeKioskApp() {
+    window.close();
+    // window.history.back();
+  }
+</script>
+
+</html>

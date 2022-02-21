@@ -10,9 +10,48 @@
 
       <div class="col-md" id="body-main">
 
-        <div id="main-section" class="d-flex">
-          <input class="input use-keyboard-input"/>
-          <textarea class="use-keyboard-input"></textarea>
+        <div id="main-section" class="">
+            <div class="mt-4 search-collection d-flex justify-content-between">
+              
+              <div class="logo d-flex align-items-center">
+                <img height="40px" src="/images/textLogo.png" alt="" srcset="">
+              </div>
+              <div class="d-flex align-items-center">
+                <form name="search-form" class="d-flex justify-content-end" action="/search" method="get">
+                  
+                  <div class="search-input input-group w-75">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="search-icon"><i class="text-secondary bi bi-search"></i></span>
+                    </div>
+                    <input name="keyword" type="text" class="form-control use-keyboard-input" id="keyword" placeholder="Search" required>
+                  </div>  
+
+                  <div>
+                    <button type="submit" class=" round-btn btn btn-light text-secondary" onclick="load()">Search</button>
+                  </div>
+
+                </form>
+              </div>
+
+            </div>
+            <hr>
+
+            <div class="results d-flex flex-wrap">
+              <% products.forEach(product => { %>
+
+                <div class="card m-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Name</h5>
+                        <p class="card-text">Model</p>
+                        <p class="card-text">key, words</p>
+                        <a href="#" class="btn btn-primary">Look up</a>
+                    </div>
+                </div>
+
+              <% }) %>
+                <!-- loop the card -->
+            </div>
+
         </div>
 
       </div>
@@ -35,9 +74,37 @@
       height: 100vh;
       background-color: rgb(255, 255, 255);
   }
+  #search-icon {
+    height: 40px;
+    padding-left: 15px;
+    background-color: white;
+    border-radius: 25px 0 0 25px;
+    border-right: 0;
+  }
+  #keyword {
+    height: 40px;
+    /* background-color: white; */
+    border-radius: 0 25px 25px 0;
+    border-left: 0;
+  }
+  .search-input .form-control:focus {
+    box-shadow: none;
+    border-color: rgb(209, 209, 209);
+  }
+  .search-input input {
+    z-index: 1;
+  }
+  .round-btn {
+    height: 40px;
+    margin-left: 5px;
+    /* border-radius: 25px 25px 25px 25px; */
+  }
+  form {
+    width: 400px;
+  }
 </style>
 <script>
-
+  
 </script>
 
 </html>

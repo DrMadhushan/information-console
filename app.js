@@ -4,7 +4,9 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 const server = require("./server");
+const remote = require("electron").remote;
 const port = process.env.port || 5000;
+let mainWindow;
 
 server.listen(port, () => {
   console.log(`Server running on port: ${port}`);
@@ -23,7 +25,7 @@ function createWindow() {
   // and load the index.html of the app.
   // mainWindow.loadFile("index.html");
   mainWindow.loadURL("http://localhost:5000");
-
+  return mainWindow;
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 }
@@ -32,7 +34,7 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  createWindow();
+  mainWindow = createWindow();
 
   app.on("activate", function () {
     // On macOS it's common to re-create a window in the app when the
