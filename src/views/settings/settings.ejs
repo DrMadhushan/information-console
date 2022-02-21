@@ -15,12 +15,13 @@
               <img height="150px"  src="/images/adminLogin.jpg">
               <div class="h2">Admin Space</div>
           </div>
-          <table class="table">
+          <div id="app-controls" class="w-100">
+            <table class="table">
               <tr id="control-row">
                 <td id="right" class="w-25"> Close App :</td>
                 <td id="left">
-                    <button onclick="closeKioskApp()" id="kiosk-mode" class="btn btn-danger btn-sm"><i class="bi bi-arrows-fullscreen"></i>&nbsp Exit Kiosk</button>
-                    <!-- <button onclick="setApplicationMode()" id="app-mode" class="btn btn-danger"><i class="bi bi-back"></i>&nbsp Applicattion Mode</button> -->
+                  <button onclick="closeKioskApp()" id="kiosk-mode" class="btn btn-danger btn-sm"><i class="bi bi-arrows-fullscreen"></i>&nbsp Exit Kiosk</button>
+                  <!-- <button onclick="setApplicationMode()" id="app-mode" class="btn btn-danger"><i class="bi bi-back"></i>&nbsp Applicattion Mode</button> -->
                 </td>
               </tr>
               <tr>
@@ -28,16 +29,41 @@
                 <td id="left">
                   <form action="/uploadBanner" method="post" enctype="multipart/form-data">
                     <input type="file" name="banner" id="upload-banner" required accept=".jpg,.jpeg,.png,.gif">
-                    <input type="submit" class="btn btn-success btn-sm" name="submit" value="Upload">
+                    <button type="submit" class="btn btn-success btn-sm" name="submit" value="Upload"><i class="bi bi-upload"></i>&nbsp Upload</button>
                   </form>
                 </td>
               </tr>
-          </table>
-          <div id="choose-mode" class="">
-             
-              
+            </table>
           </div>
-          #
+            <div id="locker-space"  class="w-100">
+              <table class="table">
+                <tr>
+                <th id="right"  class="w-25">Locker</th>
+                <th id="left" >Control</th>
+              </tr>
+              <tr>
+                <td id="right" ><i class="bi bi-wallet2">&nbsp # </i> 1</td>
+                <td id="left" >
+                  <button onclick="openLocker(1)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
+                  <button onclick="closeLocker(1)" id="kiosk-mode" class="btn btn-secondary btn-sm"><i class="bi bi-lock-fill"></i>&nbsp Close</button>
+                </td>
+              </tr>
+              <tr>
+                <td id="right" ><i class="bi bi-wallet2">&nbsp # </i> 2</td>
+                <td id="left" >
+                  <button onclick="openLocker(1)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
+                  <button onclick="closeLocker(1)" id="kiosk-mode" class="btn btn-secondary btn-sm"><i class="bi bi-lock-fill"></i>&nbsp Close</button>
+                </td>
+              </tr>
+              <tr>
+                <td id="right" ><i class="bi bi-wallet2">&nbsp # </i> 3</td>
+                <td id="left" >
+                  <button onclick="openLocker(1)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
+                  <button onclick="closeLocker(1)" id="kiosk-mode" class="btn btn-secondary btn-sm"><i class="bi bi-lock-fill"></i>&nbsp Close</button>
+                </td>
+              </tr>
+             </table>
+          </div>
         </div>
 
       </div>
