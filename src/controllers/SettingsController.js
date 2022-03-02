@@ -1,5 +1,6 @@
 const formidable = require("formidable");
-const uploadFolder = path.join(__dirname, "/src/public/uploads");
+const path = require("path");
+const uploadFolder = path.join(__dirname, "../public/uploads");
 
 async function login(req, res) {
   res.render("settings/settings");
@@ -32,8 +33,24 @@ async function fileUpload(req, res) {
   // console.log(form);
   res.render("settings/settings");
 }
+async function openLocker(req, res) {
+  try {
+    console.log("Open Locker #" + req.body.lockerNo);
+  } catch (error) {
+    console.log(error);
+  }
+  // logic to open the locker
+  // using mqtt
+  console.log("finished");
+}
+async function closeApp() {
+  console.log("send minimize");
+  ipc.send("minimize");
+}
 
 module.exports = {
   login,
   fileUpload,
+  openLocker,
+  closeApp,
 };

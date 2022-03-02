@@ -27,6 +27,8 @@ server.get("/adminLogin", SettingsController.login);
 server.get("/explore", SearchController.home);
 server.get(`/search`, SearchController.searchItem);
 
+server.post("/openLocker", SettingsController.openLocker);
+
 // post
 server.post("/uploadBanner", SettingsController.fileUpload);
 
