@@ -20,8 +20,8 @@
               <tr id="control-row">
                 <td id="right" class="w-25"> Close App :</td>
                 <td id="left">
-                  <button onclick="closeKioskApp()" id="kiosk-mode" class="btn btn-danger btn-sm"><i class="bi bi-arrows-fullscreen"></i>&nbsp Exit Kiosk</button>
-                  <!-- <button onclick="setApplicationMode()" id="app-mode" class="btn btn-danger"><i class="bi bi-back"></i>&nbsp Applicattion Mode</button> -->
+                  <button onclick="closeKioskApp()" id="kiosk-mode" class="btn btn-danger btn-sm"><i class="bi bi-back"></i>&nbsp Exit Kiosk</button>
+                  <button onclick="setKioskMode()" id="app-mode" class="btn btn-success btn-sm"><i class="bi bi-arrows-fullscreen"></i>&nbsp Kiosk Mode</button>
                 </td>
               </tr>
               <tr>
@@ -51,15 +51,15 @@
               <tr>
                 <td id="right" ><i class="bi bi-wallet2">&nbsp # </i> 2</td>
                 <td id="left" >
-                  <button onclick="openLocker(1)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
-                  <button onclick="closeLocker(1)" id="kiosk-mode" class="btn btn-secondary btn-sm"><i class="bi bi-lock-fill"></i>&nbsp Close</button>
+                  <button onclick="openLocker(2)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
+                  <button onclick="closeLocker(2)" id="kiosk-mode" class="btn btn-secondary btn-sm"><i class="bi bi-lock-fill"></i>&nbsp Close</button>
                 </td>
               </tr>
               <tr>
                 <td id="right" ><i class="bi bi-wallet2">&nbsp # </i> 3</td>
                 <td id="left" >
-                  <button onclick="openLocker(1)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
-                  <button onclick="closeLocker(1)" id="kiosk-mode" class="btn btn-secondary btn-sm"><i class="bi bi-lock-fill"></i>&nbsp Close</button>
+                  <button onclick="openLocker(3)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
+                  <button onclick="closeLocker(3)" id="kiosk-mode" class="btn btn-secondary btn-sm"><i class="bi bi-lock-fill"></i>&nbsp Close</button>
                 </td>
               </tr>
              </table>
@@ -92,9 +92,42 @@
 </style>
 <script>
   function closeKioskApp() {
-    window.close();
-    // window.history.back();
+    window.ipc.send('minimize');
   }
+  function setKioskMode() {
+    window.ipc.send('setKiosk');
+  }
+
+  function openLocker(lockerNo) {
+    window.ipc.send('unlock', {lockerNo: lockerNo});
+  }
+  window.ipc.receive('afterUnlock', (data) => {
+    console.log(`Received ${JSON.stringify(data)} from main process`);
+  })
+  // function openLocker(lockerNo) {
+
+  //   let data = {
+  //     lockerNo: lockerNo
+  //   }
+
+  //   let fetchData = {
+  //     method: 'POST',
+  //     body: JSON.stringify(data),
+  //     headers: new Headers({
+  //       'Content-Type': 'application/json; charset=UTF-8'
+  //     })
+  //   }
+
+  //   console.log("openLocker clicked");
+  //   let request = "/openLocker";
+    
+  //   fetch(request, fetchData)
+  //   .then(function(response){
+  //     console.log("done!");
+  //   }).catch(function(error){
+  //     console.log(error);
+  //   });
+  // }
 </script>
 
 </html>

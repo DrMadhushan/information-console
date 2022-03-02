@@ -2,10 +2,14 @@
 
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require("electron");
+const { ipcMain } = require("electron");
+const ipc = ipcMain;
 const path = require("path");
 const server = require("./server");
 const remote = require("electron").remote;
 const port = process.env.port || 5000;
+const host = "http://localhost:5000";
+
 let mainWindow;
 
 server.listen(port, () => {
@@ -14,18 +18,28 @@ server.listen(port, () => {
 
 function createWindow() {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1400,
     height: 900,
+    fullscreen: true,
     webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,
       preload: path.join(__dirname, "preload.js"),
     },
   });
 
   // and load the index.html of the app.
   // mainWindow.loadFile("index.html");
-  mainWindow.loadURL("http://localhost:5000");
-  return mainWindow;
+  mainWindow.loadURL(host);
+
+  ipc.on("minimize", () => {
+    mainWindow.fullScreen = false;
+  });
+  ipc.on("setKiosk", () => {
+    mainWindow.fullScreen = true;
+  });
+
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
 }
@@ -34,7 +48,7 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  mainWindow = createWindow();
+  createWindow();
 
   app.on("activate", function () {
     // On macOS it's common to re-create a window in the app when the
@@ -52,3 +66,8 @@ app.on("window-all-closed", function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+ipc.on("unlock", (event, data) => {
+  console.log("number = ");
+  console.log(data);
+  mainWindow.webContents.send('afterUnlock', data);
+});
