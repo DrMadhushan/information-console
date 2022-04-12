@@ -5,6 +5,8 @@ const { app, BrowserWindow } = require("electron");
 const { ipcMain } = require("electron");
 const ipc = ipcMain;
 const path = require("path");
+const fs = require("fs");
+
 const server = require("./server");
 const remote = require("electron").remote;
 const port = process.env.port || 5000;
@@ -34,10 +36,12 @@ function createWindow() {
   mainWindow.loadURL(host);
 
   ipc.on("minimize", () => {
-    mainWindow.fullScreen = false;
+    // mainWindow.fullScreen = false;
+    mainWindow.kiosk = false;
   });
   ipc.on("setKiosk", () => {
-    mainWindow.fullScreen = true;
+    // mainWindow.fullScreen = true;
+    mainWindow.kiosk = true;
   });
 
   // Open the DevTools.
@@ -69,5 +73,20 @@ app.on("window-all-closed", function () {
 ipc.on("unlock", (event, data) => {
   console.log("number = ");
   console.log(data);
-  mainWindow.webContents.send('afterUnlock', data);
+  mainWindow.webContents.send("afterUnlock", data);
 });
+
+const updateAdminPwd = (oldpw, newpw) => {
+  try {
+    const jsonString = fs.readFileSync("./config.json");
+    const appConfig = JSON.parse(jsonString);
+    if (oldpw == appConfig.admin.pwd) {
+      appConfig.admin.pwd = newpw;
+      const updatedJson = JSON.stringify(appConfig);
+      fs.writeFileSync("./config.json", updatedJson);
+    }
+  } catch (err) {
+    console.log(err);
+    return;
+  }
+};

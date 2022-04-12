@@ -17,9 +17,9 @@
                     <div class="text-center h5">Sign in to fix any issues</div>
                     <div class="account-wall">
                         <img class="profile-img" src="/images/adminLogin.png" alt="package login">
-                        <form class="form-signin p-3" action="">
-                        <input type="email" class="form-control use-keyboard-input" placeholder="Email" required>
-                        <input type="password" class="form-control use-keyboard-input" placeholder="Password" minlength="8" required>
+                        <form class="form-signin p-3" method="post" action="adminLogin">
+                        <input type="text" class="form-control use-keyboard-input" placeholder="Admin Id" name="uname" required>
+                        <input type="password" class="form-control use-keyboard-input" placeholder="Password" name="pwd" minlength="5" required>
                         <button class="btn w-100 btn-lg btn-primary btn-block" type="submit">
                             Sign in</button>
                         </label>
@@ -53,12 +53,13 @@
       height: 100vh;
       background-color: rgb(255, 255, 255);
   }
-
+/* 
   .form-signin {
-      /* max-width: 330px;
+      max-width: 330px;
       padding: 15px;
-      margin: 0 auto; */
+      margin: 0 auto; 
   }
+  */
   .form-signin .form-signin-heading, .form-signin .checkbox {
       margin-bottom: 10px;
   }

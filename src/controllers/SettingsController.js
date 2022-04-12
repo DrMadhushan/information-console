@@ -1,10 +1,23 @@
 const formidable = require("formidable");
+const auth = require("../authService");
 const path = require("path");
+const config = require("../../config.json");
 const uploadFolder = path.join(__dirname, "../public/uploads");
 
 async function login(req, res) {
-  res.render("settings/settings");
+  res.render("settings/login");
 }
+async function signin(req, res) {
+  console.log(req.body.uname);
+  console.log(req.body.pwd);
+  console.log("logged? " + auth.adminLogin(req.body.uname, req.body.pwd));
+  if (auth.adminLogin(req.body.uname, req.body.pwd)) {
+    res.render("settings/settings");
+  } else {
+    res.render("settings/login");
+  }
+}
+
 async function fileUpload(req, res) {
   const form = new formidable.IncomingForm();
   form.uploadDir = uploadFolder;
@@ -50,6 +63,7 @@ async function closeApp() {
 
 module.exports = {
   login,
+  signin,
   fileUpload,
   openLocker,
   closeApp,

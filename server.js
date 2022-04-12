@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const path = require("path");
 const HomeController = require("./src/controllers/HomeController");
 const PackageController = require("./src/controllers/PackageController");
@@ -15,8 +14,6 @@ server.set("views", __dirname + "/src/views"); // set express to look in this fo
 server.set("view engine", "ejs"); // configure template engine
 
 server.use(express.urlencoded());
-server.use(bodyParser.urlencoded({ extended: false }));
-server.use(bodyParser.json()); // parse form data client
 server.use(express.static(path.join(__dirname, "/src/public"))); // configure express to use public folder handle css + js files
 
 // get
@@ -31,6 +28,7 @@ server.post("/openLocker", SettingsController.openLocker);
 
 // post
 server.post("/uploadBanner", SettingsController.fileUpload);
+server.post("/adminLogin", SettingsController.signin);
 
 // 404
 server.get("*", async function (req, res) {

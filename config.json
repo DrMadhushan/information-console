@@ -1,0 +1,11 @@
+{
+    "admin" : {
+        "uname" : "admin",
+        "pwd" : "admin"
+    },
+    "mqtt" : {
+        "host" : "",
+        "port" : "1883",
+        "clientId" : "mqtt_cemakermate1"
+    }
+}
