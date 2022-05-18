@@ -30,6 +30,7 @@
     "express": "^4.17.2",
     "formidable": "^2.0.1",
     "fs": "^0.0.1-security",
+    "node-fetch": "^3.2.3",
     "nodemon": "^2.0.15"
   }
 }
