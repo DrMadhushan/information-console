@@ -23,6 +23,7 @@ server.get("/info", InformationController.help);
 server.get("/adminLogin", SettingsController.login);
 server.get("/explore", SearchController.home);
 server.get(`/search`, SearchController.searchItem);
+server.get("/item", SearchController.showItem);
 
 // post
 server.post("/openLocker", SettingsController.openLocker);
