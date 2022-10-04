@@ -21,9 +21,9 @@ server.listen(port, () => {
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1400,
+    width: 1200,
     height: 900,
-    fullscreen: true,
+    fullscreen: false,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
