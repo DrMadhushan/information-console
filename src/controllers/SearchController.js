@@ -9,7 +9,7 @@ const apiRoot = "http://127.0.0.1:4000/api";
 //   .then(data => {
 //     console.log(data)
 //   })
-
+items = [];
 const home = async (req, res) => {
   res.render("explore/explore");
 };
@@ -24,28 +24,42 @@ const searchItem = async (req, res) => {
   });
 
   if (response.status == 200) {
-    results = [];
+    items = [];
     response.data["Equipment Items"].forEach((element) => {
       // console.log(search_keyword + " ----> " + element.title);
       if (element.title.toLowerCase().includes(search_keyword.toLowerCase())) {
-        results.push(element);
+        items.push(element);
       }
     });
     response.data["Component Items"].forEach((element) => {
       // console.log(search_keyword + " ----> " + element.title);
       if (element.title.toLowerCase().includes(search_keyword.toLowerCase())) {
-        results.push(element);
+        items.push(element);
       }
     });
-    res.render("explore/searchResults", { products: results });
+    res.render("explore/searchResults", { products: items });
   } else {
     console.log(response.status);
   }
 };
 
+const showItem = async (req, res) => {
+  console.log(req.query.itemId);
+  let show_item = null;
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].id == req.query.itemId) {
+      show_item = items[i];
+      break;
+    }
+  }
+  console.log(show_item);
+  res.render("explore/itemPage", { item: show_item });
+};
+
 module.exports = {
   home,
   searchItem,
+  showItem,
 };
 
 // await axios({
