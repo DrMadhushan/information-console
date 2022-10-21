@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md p-0" id="left-nav-bar">
+                <%- include('../partials/navbar') %>
+            </div>
+            <div class="col-md" id="body-main">
+                <div id="main-section" class="d-flex flex-row pt-5 pb-5 justify-content-center">
+                    <div class="d-flex flex-column justify-content-center">
+                        <div class="h4 text-center">Items in your package <br>#<%=package.id%></div>
+                        <form class="d-flex text-center justify-content-center" action="/getotp" method="get">
+                            <button name="id" value="<%=package.id%>" class="btn rounded-3 btn btn-success" type="submit">Pick up</button>
+                        </form>
+                        <div class="d-flex flex-row flex-wrap">
+                            <!-- loop items -->
+                            <% package.component_items.forEach(item => { %>
+                                <div class="card alert-primary rounded-3 shadow m-2 p-2">
+                                    <div class="pb-1 text-dark font-weight-bold"><%=item.title%></div>
+                                    <div class="p pb-1">Item Id: <%=item.id%></div>
+                                    <div class="p pb-1"><%=item.brand%></div>
+                                    <div class="p pb-1"><%=item.specifications%></div>
+                                    <div class="p pb-1">Size: <%=item.size%></div>
+                                </div>
+                            <% }) %>
+                            <!-- loop end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    body {
+      position: relative;
+    }
+    ::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+    }
+    #main-section {
+        height: 100%;
+    }
+    #body-main {
+        margin-left: 10%;
+        height: 100vh;
+        background-color: rgb(255, 255, 255);
+    }
+</style>
+<script>
+
+</script>
+
+</html>
+  
+  
+  
+  
