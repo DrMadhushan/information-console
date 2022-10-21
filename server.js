@@ -18,12 +18,17 @@ server.use(express.static(path.join(__dirname, "/src/public"))); // configure ex
 
 // get
 server.get("/", HomeController.home);
+// server.get("/", SearchController.showItem);
 server.get("/userLogin", PackageController.login);
+server.get("/signin", PackageController.signin);
 server.get("/info", InformationController.help);
 server.get("/adminLogin", SettingsController.login);
 server.get("/explore", SearchController.home);
 server.get(`/search`, SearchController.searchItem);
 server.get("/item", SearchController.showItem);
+server.get("/package", PackageController.showPackage);
+server.get("/getotp", PackageController.pickupPackage);
+server.get("/verifyotp", PackageController.confirmOtp);
 
 // post
 server.post("/openLocker", SettingsController.openLocker);
