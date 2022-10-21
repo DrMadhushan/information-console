@@ -1,5 +1,6 @@
 # information-console
 Developer - Madhushan R - E/17/194
 
-- EJS templates
-- node js - mqtt for communication
+Clone the makerspace smart inventory repo
+run the server 
+then npm start this program
