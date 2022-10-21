@@ -35,22 +35,27 @@
 
             </div>
             <hr>
+            <% if (products.length == 0) { %>
+              <div class="p-5 d-flex flex-column justify-content-center text-center">
+                <div class="p-5 text-center">No related components or equipment found!</div>
+                <div><i class="h1 text-center text-secondary bi bi-emoji-neutral"></i></div>
+              </div>
+            <% } else { %>
+              <div class="results d-flex flex-wrap">
+                <% products.forEach(product => { %>
 
-            <div class="results d-flex flex-wrap">
-              <% products.forEach(product => { %>
-
-                <div class="card m-2" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= product.title %></h5>
-                        <p class="card-text"><%= product.brand %></p>
-                        <p class="card-text"><%= product.specifications %></p>
-                        <a href="#" class="btn btn-primary">Look up</a>
-                    </div>
-                </div>
-
-              <% }) %>
-                <!-- loop the card -->
-            </div>
+                  <div class="card m-2" style="width: 18rem;">
+                      <div class="card-body">
+                          <h5 class="card-title"><%= product.title %></h5>
+                          <p class="card-text"><%= product.brand %></p>
+                          <p class="card-text"><%= product.specifications %></p>
+                          <a href="/item?itemId=<%= product.id %>" class="btn btn-primary">Look up</a>
+                      </div>
+                  </div>
+                <% }) %>
+                  <!-- loop the card -->
+              </div>
+            <% } %>
 
         </div>
 
