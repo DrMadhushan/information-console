@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md p-0" id="left-nav-bar">
+        <%- include('../partials/navbar') %>
+      </div>
+
+      <div class="col-md" id="body-main">
+
+        <div id="main-section" class="d-flex align-items-center flex-column justify-content-center">
+          <div class="h4">
+            We have sent an otp to your email. Enter it to verify your authenticity.
+          </div>
+          <form action="/verifyotp" method="get" style="width: 500px;" class="d-flex align-items-center flex-column justify-content-center" >
+            <div class="search-input input-group mb-3 w-100">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="search-icon"><i class="text-secondary bi bi-key"></i></span>
+              </div>
+              <input name="otp" type="text" class="form-control use-keyboard-input" id="keyword" placeholder="Enter your OTP here" aria-label="otp" required>
+            </div>
+            <button type="submit" name="id" value="<%=id%>" class="w-25 round-btn btn btn-light text-secondary" onclick="load()">Verify</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+<style>
+  body {
+    position: relative;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+  #main-section {
+      height: 100%;
+  }
+  #body-main {
+      margin-left: 10%;
+      height: 100vh;
+      background-color: rgb(255, 255, 255);
+  }
+  #search-icon {
+    height: 50px;
+    padding-left: 15px;
+    background-color: white;
+    border-radius: 25px 0 0 25px;
+    border-right: 0;
+  }
+  #keyword {
+    height: 50px;
+    /* background-color: white; */
+    border-radius: 0 25px 25px 0;
+    border-left: 0;
+  }
+  .search-input .form-control:focus {
+    box-shadow: none;
+    border-color: rgb(209, 209, 209);
+  }
+  .search-input input {
+    z-index: 1;
+  }
+  .round-btn {
+    height: 40px;
+    /* border-radius: 25px 25px 25px 25px; */
+  }
+</style>
+<script>
+
+</script>
+
+</html>
