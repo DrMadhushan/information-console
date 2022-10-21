@@ -14,19 +14,22 @@
           <div class="container-fluid">
             <div class="d-flex justify-content-center">
                 <div class="col-md-5">
-                    <div class="text-center h5">Sign in to continue to view your cart</div>
+                    <div class="text-center h5">Sign in to view your packages</div>
                     <div class="account-wall">
                         <img class="profile-img" src="/images/packageLogin.png" alt="package login">
-                        <form class="form-signin p-3" action="">
-                          <input type="email" class="form-control use-keyboard-input" placeholder="Email" required>
-                          <input type="password" class="form-control use-keyboard-input" placeholder="Password" minlength="8" required>
-                          <button class="btn w-100 btn-lg btn-primary btn-block" onclick="closeKeyboard();" type="submit">
-                              Sign in</button>
-                          </label>
+
+                        <form action="/signin" method="get" class="form-signin p-3" >
+                          <input name="email" type="email" class="form-control use-keyboard-input" placeholder="Email" required>
+                          <input name="password" type="password" class="form-control use-keyboard-input" placeholder="Password" minlength="8" required>
+                          <button type="submit" class="btn w-100 btn-lg btn-primary btn-block" onclick="closeKeyboard();">
+                              Sign in
+                          </button>
+                          
                           <div class="w-100 text-center mt-2">
                             <a href="/info" class="">Need help? </a><span class="clearfix"></span>
                           </div>
                         </form>
+
                     </div>
                 </div>
             </div>
