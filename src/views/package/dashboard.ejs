@@ -9,40 +9,56 @@
       </div>
 
       <div class="col-md" id="body-main">
-
-        <div id="main-section" class="d-flex pt-5 pb-5">
-          <div class="col m-2 shadow-sm">
-            <div class="h2 p-2 text-secondary">Packages to return</div>
-            <div class="packages pt-2">
-                <!-- for loop -->
-                <div class="card m-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Package Id</h5>
-                      <p class="card-text">Due Date</p>
-                      <a href="#" class="btn btn-sm btn-primary">Return</a>
-                    </div>
-                </div>
-                <!-- end for loop -->
+        <% if (message == null) { %>
+          <div id="main-section" class="d-flex pt-5 pb-5">
+            <div class="col m-2 shadow-sm">
+              <div class="h2 p-2 text-secondary">Packages in queue</div>
+              <div class="packages pt-2">
+                  <!-- for loop -->
+                  <% packages.forEach(package => { %>
+                    <% if (package.status == "pending") { %>                     
+                      <div class="card m-2">
+                        <div class="card-body">
+                          <h5 class="card-title">Package ID: <%=package.id%></h5>
+                          <h5 class="card-title">Order placed on:  <%=package.ordered_date%></h5>
+                          <p class="card-text">Return before: <%=package.due_date_to_return%></p>
+                          <form action="/package" method="get">
+                            <button name="id" value="<%=package.id%>" class="btn btn-sm btn-primary" type="submit">View</button>
+                          </form>
+                        </div>
+                      </div>
+                    <% } %>
+                  <% }) %>
+                  <!-- end for loop -->
+              </div>
+            </div>
+            <div class="col m-2 shadow-sm">
+              <div class="h2 p-2 text-secondary">Packages ready to pickup</div>
+              <div class="packages pt-2">
+                  <!-- for loop -->
+                  <% packages.forEach(package => { %>
+                    <% if (package.status == "ready") { %>   
+                      <div class="card m-2">
+                          <div class="card-body">
+                            <h5 class="card-title">Package ID: <%=package.id%></h5>
+                            <h5 class="card-title">Order placed on:  <%=package.ordered_date%></h5>
+                            <p class="card-text">Return before: <%=package.due_date_to_return%></p>
+                            <form action="/package" method="get">
+                              <button name="id" value="<%=package.id%>" class="btn btn-sm btn-success" type="submit">View</button>
+                            </form>
+                          </div>
+                      </div>
+                    <% } %>
+                  <% }) %>
+                  <!-- end for loop -->
+              </div>
             </div>
           </div>
-          <div class="col m-2 shadow-sm">
-            <div class="h2 p-2 text-secondary">Packages to pickup</div>
-            <div class="packages pt-2">
-                <!-- for loop -->
-                <div class="card m-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Package Id</h5>
-                      <p class="card-text">Due Date</p>
-                      <form action="package" method="post">
-                        <button name="id" value="#23" class="btn btn-sm btn-success" type="submit">View</button>
-                      </form>
-                    </div>
-                </div>
-                <!-- end for loop -->
-            </div>
+        <% } else { %>
+          <div class="alert alert-warning" role="alert">
+            <div class="display-4">Something went wrong. Please log in again to view your packages!</div>
           </div>
-        </div>
-
+        <% } %>
       </div>
     </div>
   </div>
