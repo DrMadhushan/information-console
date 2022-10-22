@@ -109,11 +109,15 @@ async function showPackage(req, res) {
     // res.render("package/login", { message: "Login to view your cart" });
     return { message: "Login to view your cart" };
   }
-  console.log(response.data);
-  res.render("package/package", { package: response.data });
+  // console.log(response.data);
+  // let isready = response.data.status == 'ready' ? true : false;
+  let isready = response.data.status == "pending" ? true : false;
+
+  res.render("package/package", { package: response.data, isready: isready });
 }
 
 async function pickupPackage(req, res) {
+  console.log("query.id = " + req.query.id);
   const response = await axios
     .get(apiRoot + "/auth/user/orders/" + req.query.id + "/otp", {
       headers: {
@@ -124,13 +128,14 @@ async function pickupPackage(req, res) {
       // res.render("package/login", { message: "Login to view your cart" });
       return { message: "Login to view your cart" };
     });
+  console.log(response.data)
   res.render("package/enterOtp", { id: req.query.id });
 }
 
 async function confirmOtp(req, res) {
   const response = await axios
     .get(
-      apiRoot + "/auth/user/orders/" + req.query.id + "/otp/" + req.query.id,
+      apiRoot + "/auth/user/orders/" + req.query.id + "/otp/" + req.query.otp,
       {
         headers: {
           Authorization: "Bearer " + ACCESS_TOKEN,
@@ -141,8 +146,13 @@ async function confirmOtp(req, res) {
       // res.render("package/login", { message: "Login to view your cart" });
       return { message: "OTP confirmation failed" };
     });
-  console.log(response);
-  // if (response)
+  console.log(response.data);
+  let isOTPCorrect = response.data;
+  if (isOTPCorrect) {
+    res.render("package/receptionSuccess");
+  } else {
+    res.render("package/receptionFail");
+  }
 }
 
 module.exports = {
