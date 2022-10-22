@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md p-0" id="left-nav-bar">
+        <%- include('../partials/navbar') %>
+      </div>
+
+      <div class="col-md" id="body-main">
+
+        <div id="main-section" class="d-flex align-items-center flex-column justify-content-center">
+          <div class="h1">
+            <i class="bi bi-person-check-fill text-success"></i>
+          </div>
+          <div class="h4">
+            Verification Successful!
+          </div>
+          <div class="h5">
+            The locker <!-- insert locker number --> is opened. Pick-up the package and close it properly.
+          </div>
+          <div class="display-1">
+            <i class="bi bi-archive-fill"></i> : 01
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+<style>
+  body {
+    position: relative;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+  #main-section {
+      height: 100%;
+  }
+  #body-main {
+      margin-left: 10%;
+      height: 100vh;
+      background-color: rgb(255, 255, 255);
+  }
+  #search-icon {
+    height: 50px;
+    padding-left: 15px;
+    background-color: white;
+    border-radius: 25px 0 0 25px;
+    border-right: 0;
+  }
+  #keyword {
+    height: 50px;
+    /* background-color: white; */
+    border-radius: 0 25px 25px 0;
+    border-left: 0;
+  }
+  .search-input .form-control:focus {
+    box-shadow: none;
+    border-color: rgb(209, 209, 209);
+  }
+  .search-input input {
+    z-index: 1;
+  }
+  .round-btn {
+    height: 40px;
+    /* border-radius: 25px 25px 25px 25px; */
+  }
+</style>
+<script>
+
+</script>
+
+</html>
