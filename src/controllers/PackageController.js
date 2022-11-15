@@ -2,7 +2,7 @@ const axios = require("axios");
 const { options } = require("nodemon/lib/config");
 const apiRoot = "http://127.0.0.1:4000/api";
 
-ACCESS_TOKEN = "16|nRsEkHFM4qd90StWB9esfNiGg2M7EnSmdBR2lRFb";
+ACCESS_TOKEN = "";
 to_pickup = [];
 to_return = [];
 
@@ -128,7 +128,7 @@ async function pickupPackage(req, res) {
       // res.render("package/login", { message: "Login to view your cart" });
       return { message: "Login to view your cart" };
     });
-  console.log(response.data)
+  console.log(response.data);
   res.render("package/enterOtp", { id: req.query.id });
 }
 
@@ -149,6 +149,7 @@ async function confirmOtp(req, res) {
   console.log(response.data);
   let isOTPCorrect = response.data;
   if (isOTPCorrect) {
+    ACCESS_TOKEN = "";
     res.render("package/receptionSuccess");
   } else {
     res.render("package/receptionFail");
