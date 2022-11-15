@@ -20,6 +20,7 @@ const searchItem = async (req, res) => {
   const query = apiRoot + "/search?term=" + search_keyword;
   // console.log(typeof search_keyword);
   const response = await axios.get(query).catch(function (error) {
+    console.log("Hello World");
     console.log(error);
   });
 
