@@ -1,6 +1,7 @@
 const axios = require("axios");
 const { options } = require("nodemon/lib/config");
-const apiRoot = "http://127.0.0.1:4000/api";
+const config = require("../../config.json");
+const apiRoot = config.api;
 
 ACCESS_TOKEN = "";
 to_pickup = [];

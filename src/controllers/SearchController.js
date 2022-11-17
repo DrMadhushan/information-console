@@ -2,7 +2,8 @@
 // import fetch from "node-fetch";
 // const fetch = import('node-fetch');
 const axios = require("axios");
-const apiRoot = "http://127.0.0.1:4000/api";
+const config = require("../../config.json");
+const apiRoot = config.api;
 
 // fetch('https://example.com')
 //   .then(response => response.json())
