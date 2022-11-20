@@ -7,7 +7,10 @@ const ipc = ipcMain;
 const path = require("path");
 const fs = require("fs");
 
+const config = require("./config.json");
 const server = require("./server");
+const mqttClient = require("./renderer");
+
 const remote = require("electron").remote;
 const port = process.env.port || 5000;
 const host = "http://localhost:5000";
@@ -23,7 +26,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 900,
-    fullscreen: false,
+    fullscreen: true,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -36,11 +39,11 @@ function createWindow() {
   mainWindow.loadURL(host);
 
   ipc.on("minimize", () => {
-    // mainWindow.fullScreen = false;
     mainWindow.kiosk = false;
+    mainWindow.fullScreen = false;
   });
   ipc.on("setKiosk", () => {
-    // mainWindow.fullScreen = true;
+    mainWindow.fullScreen = true;
     mainWindow.kiosk = true;
   });
 
@@ -73,6 +76,11 @@ app.on("window-all-closed", function () {
 ipc.on("unlock", (event, data) => {
   console.log("number = ");
   console.log(data);
+  console.log(config.mqtt.pubTopic + "0");
+  mqttClient.publish(config.mqtt.pubTopic + data.lockerNo, "unlock", {
+    qos: 0,
+    retain: false,
+  });
   mainWindow.webContents.send("afterUnlock", data);
 });
 
