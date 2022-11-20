@@ -3,7 +3,7 @@
 // const fetch = import('node-fetch');
 const axios = require("axios");
 const config = require("../../config.json");
-const apiRoot = config.api;
+const apiRoot = config.api.address;
 
 // fetch('https://example.com')
 //   .then(response => response.json())
@@ -19,9 +19,10 @@ const searchItem = async (req, res) => {
   // await new Promise((resolve) => setTimeout(resolve, 20));
   const search_keyword = req.query.keyword;
   const query = apiRoot + "/search?term=" + search_keyword;
+  // console.log(apiRoot);
   // console.log(typeof search_keyword);
   const response = await axios.get(query).catch(function (error) {
-    console.log("Hello World");
+    console.log("Error when searching");
     console.log(error);
   });
 
