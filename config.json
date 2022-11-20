@@ -4,11 +4,14 @@
         "pwd" : "admin"
     },
     "mqtt" : {
-        "host" : "",
-        "port" : "1883",
-        "clientId" : "mqtt_cemakermate1"
+        "host" : "tls://a0015abbd36941558cfc01c3690b7163.s2.eu.hivemq.cloud",
+        "port" : "8883",
+        "clientId" : "mqtt_cemakermate1",
+        "subTopic": "makermate/ultrasonic",
+        "pubTopic": "makermate/locker/"
+
     },
     "api":{
-        "address": "http://127.0.0.1:8000/api"
+        "address": "http://10.40.18.10:8000/api"
     }
 }
