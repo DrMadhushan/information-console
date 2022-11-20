@@ -39,29 +39,23 @@
               <table class="table">
                 <tr>
                 <th id="right"  class="w-25">Locker</th>
+                <th id="left"  class="w-25">package</th>
                 <th id="left" >Control</th>
               </tr>
-              <tr>
-                <td id="right" ><i class="bi bi-wallet2">&nbsp # </i> 1</td>
-                <td id="left" >
-                  <button onclick="openLocker(0)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
-                  <button onclick="closeLocker(0)" id="kiosk-mode" class="btn btn-secondary btn-sm"><i class="bi bi-lock-fill"></i>&nbsp Close</button>
-                </td>
-              </tr>
-              <tr>
-                <td id="right" ><i class="bi bi-wallet2">&nbsp # </i> 2</td>
-                <td id="left" >
-                  <button onclick="openLocker(1)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
-                  <button onclick="closeLocker(1)" id="kiosk-mode" class="btn btn-secondary btn-sm"><i class="bi bi-lock-fill"></i>&nbsp Close</button>
-                </td>
-              </tr>
-              <tr>
-                <td id="right" ><i class="bi bi-wallet2">&nbsp # </i> 3</td>
-                <td id="left" >
-                  <button onclick="openLocker(2)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
-                  <button onclick="closeLocker(2)" id="kiosk-mode" class="btn btn-secondary btn-sm"><i class="bi bi-lock-fill"></i>&nbsp Close</button>
-                </td>
-              </tr>
+              <% lockers.forEach(locker => { %>
+                <tr>
+                  <td id="right" ><i class="bi bi-wallet2">&nbsp # </i> <%= locker.locker_no %></td>
+                  <% if (locker.package_no != "Empty") {%>
+                    <td id="left" class="text-danger"><i class="bi bi-box2">&nbsp # </i> <%= locker.package_no %></td>
+                  <% } else { %>
+                    <td id="left" class="text-success"><i class="bi bi-box2">&nbsp </i> <%= locker.package_no %></td>
+                  <% } %>
+                  <td id="left" >
+                    <button onclick="openLocker(<%= locker.locker_no %>)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
+                    <!-- <button onclick="closeLocker(0)" id="kiosk-mode" class="btn btn-secondary btn-sm"><i class="bi bi-lock-fill"></i>&nbsp Close</button> -->
+                  </td>
+                </tr>
+              <% }) %>
              </table>
           </div>
         </div>
@@ -104,30 +98,7 @@
   window.ipc.receive('afterUnlock', (data) => {
     console.log(`Received ${JSON.stringify(data)} from main process`);
   })
-  // function openLocker(lockerNo) {
-
-  //   let data = {
-  //     lockerNo: lockerNo
-  //   }
-
-  //   let fetchData = {
-  //     method: 'POST',
-  //     body: JSON.stringify(data),
-  //     headers: new Headers({
-  //       'Content-Type': 'application/json; charset=UTF-8'
-  //     })
-  //   }
-
-  //   console.log("openLocker clicked");
-  //   let request = "/openLocker";
-    
-  //   fetch(request, fetchData)
-  //   .then(function(response){
-  //     console.log("done!");
-  //   }).catch(function(error){
-  //     console.log(error);
-  //   });
-  // }
+  
 </script>
 
 </html>
