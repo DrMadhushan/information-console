@@ -1,4 +1,6 @@
 const { contextBridge, ipcRenderer } = require("electron");
+const mqtt = require("mqtt");
+window.mqtt = mqtt;
 
 // Expose protected methods that allow the renderer process to use
 // the ipcRenderer without exposing the entire object
