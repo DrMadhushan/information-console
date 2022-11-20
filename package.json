@@ -1,7 +1,7 @@
 {
   "name": "information-console",
-  "version": "1.0.0",
-  "description": "Developer - Madhushan R - E/17/194",
+  "version": "2.0.0",
+  "description": "Maker Mate Application to assist maker space users",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/DrMadhushan/information-console.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Madhushan R - E/17/194",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DrMadhushan/information-console/issues"
