@@ -15,6 +15,9 @@
             <div class="d-flex justify-content-center">
                 <div class="col-md-5">
                     <div class="text-center h5">Sign in to view your packages</div>
+                    <% if (message != "success") { %>
+                    <div class="text-center text-danger h6"><%= message %></div>
+                    <% } %>
                     <div class="account-wall">
                         <img class="profile-img" src="/images/packageLogin.png" alt="package login">
 
