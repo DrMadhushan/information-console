@@ -4,6 +4,7 @@
 const axios = require("axios");
 const config = require("../../config.json");
 const apiRoot = config.api.address;
+const imgs = config.api.imgs;
 
 // fetch('https://example.com')
 //   .then(response => response.json())
@@ -31,13 +32,15 @@ const searchItem = async (req, res) => {
     response.data["Equipment Items"].forEach((element) => {
       // console.log(search_keyword + " ----> " + element.title);
       // if (element.title.toLowerCase().includes(search_keyword.toLowerCase())) {
-      items.push(element);
+      let type = imgs + "equipment_items/";
+      items.push({ element: element, type: type });
       // }
     });
     response.data["Component Items"].forEach((element) => {
       // console.log(search_keyword + " ----> " + element.title);
       // if (element.title.toLowerCase().includes(search_keyword.toLowerCase())) {
-      items.push(element);
+      let type = imgs + "component_items/";
+      items.push({ element: element, type: type });
       // }
     });
 
@@ -54,12 +57,13 @@ const showItem = async (req, res) => {
   console.log(req.query.itemId);
   let show_item = null;
   for (let i = 0; i < items.length; i++) {
-    if (items[i].id == req.query.itemId) {
+    if (items[i].element.id == req.query.itemId) {
       show_item = items[i];
       break;
     }
   }
-
+  // console.log(showItem);
+  // console.log("img url = " + showItem.type + showItem.element.thumb);
   /*
   show_item = {
     id: 1001,
@@ -90,7 +94,7 @@ const showItem = async (req, res) => {
   */
   // console.log(show_item);
   // res.render("explore/itemPage");
-  res.render("explore/itemPage", { item: show_item });
+  res.render("explore/itemPage", { item: show_item, imgs: imgs });
 };
 
 module.exports = {

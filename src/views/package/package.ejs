@@ -8,6 +8,11 @@
                 <%- include('../partials/navbar') %>
             </div>
             <div class="col-md" id="body-main">
+
+                <form action="/logout" method="get" class="pt-3 pb-1">
+                    <button name="" class="btn btn-sm btn-danger" type="submit">Logout <i class="bi bi-box-arrow-right"></i></button>
+                  </form>
+
                 <div id="main-section" class="d-flex flex-row pt-5 pb-5 justify-content-center">
                     <div class="d-flex flex-column justify-content-center">
                         <div class="h4 text-center">Items in your package <br>#<%=package.id%></div>

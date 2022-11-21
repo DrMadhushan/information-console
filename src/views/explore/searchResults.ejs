@@ -46,10 +46,10 @@
 
                   <div class="card m-2" style="width: 18rem;">
                       <div class="card-body">
-                          <h5 class="card-title"><%= product.title %></h5>
-                          <p class="card-text"><%= product.brand %></p>
-                          <p class="card-text"><%= product.specifications %></p>
-                          <a href="/item?itemId=<%= product.id %>" class="btn btn-primary">Look up</a>
+                          <h5 class="card-title"><%= product.element.title %></h5>
+                          <p class="card-text"><%= product.element.brand %></p>
+                          <p class="card-text"><%= product.element.description %></p>
+                          <a href="/item?itemId=<%= product.element.id %>" class="btn btn-primary">Look up</a>
                       </div>
                   </div>
                 <% }) %>

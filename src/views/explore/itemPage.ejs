@@ -16,50 +16,54 @@
             <div class="col-4 p-4">
               <div class="border border-secondary">
                 <div class="p-2">
-                  <img class="w-100" src="https://2e1293630802db8d0d56-50fcdb1c10e3e49a3d1b0541a2f13b69.ssl.cf1.rackcdn.com/product/images/600x600/b24dacc3f62f42f2bf2dc87a6bc6c104.png" alt="">
+                  <img class="w-100" src="<%= item.type + item.element.thumb %>" alt="<%=item.element.title%>">
                 </div>
-                <div class="h2 d-flex justify-content-center text-center"><%= item.title %></div>
+                <div class="h2 d-flex justify-content-center text-center"><%= item.element.title %></div>
               </div>
             </div>
             <div class="col-8 p-4 d-flex flex-column justify-content-center">
-              <p>Brand: <%= item.brand %> </p>
-              <p>Product Code: <%= item.productCode %></p>
-              <p>Available Count: <%= item.quantity %>
-                <% if (!item.isAvailable) { %>
+              <p>Brand: <%= item.element.brand %> </p>
+              <p>Product Code: <%= item.element.productCode %></p>
+              <p>Available Count: <%= item.element.quantity %>
+                <% if (item.element.quantity < 1) { %>
                   <i class="p-2 text-danger bi bi-exclamation-circle-fill"> out of stock</i>
                 <% } %>
               </p>
-              <p>Power Rating: <%= item.powerRating %></p>
-              <p>Size: <%= item.size %></p>
-              <p>Market Price: <%= "Rs. " + item.price + ".00" %></p>
+              <p>Power Rating: <%= item.element.powerRating %> W</p>
+              <p>Size: <%= item.element.size %></p>
+              <p>Market Price: <%= "Rs. " + item.element.price + ".00" %></p>
               
               <p>Description: <br>
-                <%= item.description %>
+                <%= item.element.description %>
               </p>
             </div>
             <!--  -->
           </div>
           <div class="row">
-            <div class="col-6">
+            <div class="col">
               <div class="p-4">
                 <div class="h2">
-                  Instructions to use/ handle
+                  Instructions to use/ handle<br>
                 </div>
-                <div class="row d-flex justify-content-center">
-                  <iframe height="300" src="<%= item.instructions %> " allow="picture-in-picture" allowfullscreen></iframe>
+                <div class="p">
+<%= item.element.instructions %> 
                 </div>
+                <!-- <div class="row d-flex justify-content-center">
+                  <iframe height="300" src="<%= item.element.instructions %> " allow="picture-in-picture" allowfullscreen></iframe>
+                </div> -->
               </div>
             </div>
-            <div class="col-6">
+            <!-- <div class="col-6">
               <div class="p-4">
                 <div class="h2">
-                  Documentation to use/ handle
+                  Documentation to use/ handle<br>
+                  <%= item.element.documentationLink %>
                 </div>
                 <div class="row d-flex justify-content-center">
-                  <iframe height="300" src="<%= item.documentationLink %>" allowfullscreen></iframe>
+                  <iframe height="300" src="<%= item.element.documentationLink %>" allowfullscreen></iframe>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
 
         </div>

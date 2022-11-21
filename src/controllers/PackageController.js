@@ -135,7 +135,9 @@ async function pickupPackage(req, res) {
       .catch(function (error) {
         // res.render("package/login", { message: "Login to view your cart" });
         console.log(error);
-        return { message: "Login to view your cart" };
+        return {
+          message: "Login to view your cart or error while getting otp",
+        };
       });
     console.log(response.data);
     console.log(response);
