@@ -23,7 +23,7 @@ async function signin(req, res) {
     });
     if (response.status == 200) {
       response.data.forEach((locker_elem) => {
-        if (locker_elem.orders != null) {
+        if (locker_elem.is_available == 0) {
           lockers.push({
             locker_no: locker_elem.id,
             package_no: locker_elem.orders.id,
@@ -35,7 +35,7 @@ async function signin(req, res) {
           });
         }
       });
-      console.log("order response = ", response);
+      // console.log("order response = ", response);
       res.render("settings/settings", { lockers: lockers });
     }
   } else {
