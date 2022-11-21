@@ -51,7 +51,7 @@
                     <td id="left" class="text-success"><i class="bi bi-box2">&nbsp </i> <%= locker.package_no %></td>
                   <% } %>
                   <td id="left" >
-                    <button onclick="openLocker(<%= locker.locker_no %>)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
+                    <button onclick="openLocker(<%= locker.locker_no - 1 %>)" id="kiosk-mode" class="btn btn-primary btn-sm"><i class="bi bi-unlock-fill"></i>&nbsp Open</button>
                     <!-- <button onclick="closeLocker(0)" id="kiosk-mode" class="btn btn-secondary btn-sm"><i class="bi bi-lock-fill"></i>&nbsp Close</button> -->
                   </td>
                 </tr>
