@@ -2,6 +2,11 @@
 const clientId = "mqttjs_" + Math.random().toString(16).substr(2, 8);
 const config = require("./config.json");
 const mqtt = require("mqtt");
+const PackageController = require("./src/controllers/PackageController");
+const server = require("./server");
+const axios = require("axios");
+
+const port = process.env.port || 5000;
 
 const host = config.mqtt.host;
 
@@ -41,10 +46,10 @@ client.on("reconnect", () => {
 
 client.on("connect", () => {
   console.log("Client connected:" + clientId);
-  //   client.subscribe("testtopic/electron", {
-  //     qos: 0,
-  //   });
-  //   setInterval(
+  client.subscribe(config.mqtt.subTopic, {
+    qos: 0,
+  });
+  // setInterval(
   //     () =>
   //       client.publish("makermate/lock", "from app", {
   //         qos: 0,
@@ -58,6 +63,9 @@ client.on("message", (topic, message, packet) => {
   console.log(
     "Received Message: " + message.toString() + "\nOn topic: " + topic
   );
+  if (message == "logout") {
+    axios.get("http://127.0.0.1:" + port + "/logout");
+  }
 });
 
 module.exports = client;

@@ -21,6 +21,7 @@ server.get("/", HomeController.home);
 // server.get("/", SearchController.showItem);
 server.get("/userLogin", PackageController.login);
 server.get("/signin", PackageController.signin);
+server.get("/logout", PackageController.logout);
 server.get("/info", InformationController.help);
 server.get("/adminLogin", SettingsController.login);
 server.get("/explore", SearchController.home);

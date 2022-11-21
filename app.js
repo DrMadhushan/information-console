@@ -74,9 +74,8 @@ app.on("window-all-closed", function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 ipc.on("unlock", (event, data) => {
-  console.log("number = ");
-  console.log(data);
-  console.log(config.mqtt.pubTopic + "0");
+  console.log("Locker number = " + data);
+  console.log("Publish to topic : "+ config.mqtt.pubTopic + data.lockerNo);
   mqttClient.publish(config.mqtt.pubTopic + data.lockerNo, "unlock", {
     qos: 0,
     retain: false,
