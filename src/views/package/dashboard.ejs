@@ -16,12 +16,12 @@
               <div class="packages pt-2">
                   <!-- for loop -->
                   <% packages.forEach(package => { %>
-                    <% if (package.status == "pending") { %>                     
+                    <% if (package.status != "READY") { %>                     
                       <div class="card m-2">
                         <div class="card-body">
                           <h5 class="card-title">Package ID: <%=package.id%></h5>
                           <h5 class="card-title">Order placed on:  <%=package.ordered_date%></h5>
-                          <p class="card-text">Return before: <%=package.due_date_to_return%></p>
+                          <p class="card-text">Current status: <%=package.status%></p>
                           <form action="/package" method="get">
                             <button name="id" value="<%=package.id%>" class="btn btn-sm btn-primary" type="submit">View</button>
                           </form>
@@ -37,7 +37,7 @@
               <div class="packages pt-2">
                   <!-- for loop -->
                   <% packages.forEach(package => { %>
-                    <% if (package.status == "ready") { %>   
+                    <% if (package.status == "READY") { %>   
                       <div class="card m-2">
                           <div class="card-body">
                             <h5 class="card-title">Package ID: <%=package.id%></h5>
