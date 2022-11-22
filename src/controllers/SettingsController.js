@@ -23,7 +23,7 @@ async function signin(req, res) {
     });
     if (response.status == 200) {
       response.data.forEach((locker_elem) => {
-        if (locker_elem.is_available == 0) {
+        if (locker_elem.is_available == 0 && locker_elem.orders != null) {
           lockers.push({
             locker_no: locker_elem.id,
             package_no: locker_elem.orders.id,

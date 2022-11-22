@@ -12,7 +12,7 @@
 
     },
     "api":{
-        "address": "http://127.0.0.1:8000/api",
-        "imgs": "http://127.0.0.1:8000/img/"
+        "address": "https://ce-smart-inventory.herokuapp.com/api",
+        "imgs": "https://ce-smart-inventory.herokuapp.com/img/"
     }
 }
